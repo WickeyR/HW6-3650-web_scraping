@@ -1,9 +1,11 @@
 from parsel import Selector
+import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+
 
 # Set options to run in headless mode and disable image loading
 options = Options()
@@ -41,8 +43,11 @@ try:
         })
 
     # Output the parsed data
-    print(parsed)
+    for item in parsed:
+        print(item)
 
+    # keeps the browser open
+    time.sleep(10)
 finally:
     # Quit the driver after scraping
     driver.quit()
